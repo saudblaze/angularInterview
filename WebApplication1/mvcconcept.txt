@@ -1,0 +1,33 @@
+= > create new project = > web api
+= > comment all except GlobalConfiguration and remove from app start
+= > remove all controller
+= > remove view
+= > add /{action} in webapiconfig.cs after {controller}
+
+= > add index.html in main folder
+= > add nugget package add angularjs.core 
+= > in header add Scripts/angular.js in index.html
+= > create folder app 
+= > create app.js in app folder
+= > create controller folder in app folder and create mycontroller.js in it
+= > create services folder in app folder and create myservice.js in it
+= > after body add app.js,mycontroller.js,EmployeeService.js ref in index.html page
+= > add bootstrap from nuget package
+
+= > add database folder 
+= > create database in sql
+= > create tables
+= > add edmx file to solution within database folder
+
+= > create folders controller,services,
+= > create employeecontroller.cs
+= > create employeeservices.cs
+
+=> create private readonly Entities db;
+	public EmployeeServices()
+        {
+            db = new Entities();
+        }
+
+
+
