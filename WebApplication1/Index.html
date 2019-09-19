@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <title></title>
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="mycontroller">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.EmployeeName" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DOB
+            </td>
+            <td>
+                <input type="date" ng-model="Employee.DOB" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                <input type="radio" name="rbGender" ng-model="Employee.Gender" ng-value="true" /> Male
+                <input type="radio" name="rbGender" ng-model="Employee.Gender" ng-value="false" /> Female
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Department
+            </td>
+            <td>
+                <select ng-model="Employee.DepartmentID" ng-options="B.id as B.name for B in DepartmentList">
+                    <option value="">Select Department</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" class="btn btn-default" ng-click="Cancel()" value="Cancel" />
+                <input type="button" class="btn btn-primary" ng-click="SaveEmployee()" value="Save Employee" />
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>
+                    Employee Name
+                </td>
+                <td>
+                    DOB
+                </td>
+                <td>
+                    Gender
+                </td>
+                <td>
+                    Department
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        
+        <tr ng-repeat="E in EmployeeList">
+            <td>
+                {{E.EmployeeName}}
+            </td>
+            <td>
+                {{E.DOB | date : 'dd/MM/yyyy'}}
+            </td>
+            <td>
+                {{(E.Gender == true ? 'Male' : 'Female')}}
+            </td>
+            <td>
+                {{E.DepartmentID ? (DepartmentList | filter : {id:E.DepartmentID}:true)[0].name : 'Not Selected'}}
+            </td>
+            <td>
+                <input type="button" class="btn btn-primary" ng-click="EditEmployee(E.ID)" value="Edit" />
+            </td>
+            <td>
+                <input type="button" class="btn btn-primary" ng-click="DeleteEmployee(E.ID)" value="Delete" />
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+<script type="text/javascript" src="App/app.js"></script>
+<script type="text/javascript" src="App/controller/myController.js"></script>
+<script type="text/javascript" src="App/Services/EmployeeService.js"></script>
+
+<script type="text/javascript" src="Scripts/bootstrap.js"></script>
+</html>
